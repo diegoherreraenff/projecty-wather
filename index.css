@@ -43,6 +43,28 @@ body {
     border-radius: 20px;
     display: block;
 }
+
+#tarjetas{
+    display: flex;
+    flex-direction: row;
+
+}
+ .nuevas_tarjetas {
+    width: 205px;
+    height: 310px;
+    background-color: #fff;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding-bottom: 50px;
+    flex-direction: column;
+    margin-top: 20px;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+
+ }
+   
+
+
 #default {
     width: 400px;
     background-color: #fff;
@@ -55,7 +77,7 @@ body {
     font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
-#div_padre{
+/* #div_padre{
     width: 400px;
     background-color: #fff;
     display: block;
@@ -79,6 +101,6 @@ body {
 #temperatura{
     font-size: 2rem;
     font-family: Marker Felt, fantasy;
-}
+} */
 
 
