@@ -1,22 +1,31 @@
 .container-md{
     display: flex;
-;
+
 }
 
+.h1{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    text-align: center;
+}
+
+
 #input{
-    background-color: rgb(248, 238, 238);
-    width: 35%;
-    height: 3em;
+    background-color: rgb(158, 77, 77);
+    padding: 0;
     top: 20px;
-    left:3em;
     font-family: Comic Sans MS, Comic Sans, cursive; 
 }
+
 
 
 body {
     margin: 0;
     padding: 0;
-    background-color:#56a0d0;
+    background-image: url(./img/Clima-en-la-rioja-1024x683.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
     font-family: Comic Sans MS, Comic Sans, cursive;
 }
 #description{
@@ -33,13 +42,13 @@ body {
 
 
 #map{
-    margin: 7em 2em;
-    width: 95%;
+    margin: auto 1em;
+    
     height: 289px;
     top: 50%;
     
     right: auto;
-    border: 5px solid rgb(219, 42, 145);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 20px;
     display: block;
 }
@@ -51,23 +60,26 @@ body {
 }
  .nuevas_tarjetas {
     width: 205px;
-    height: 310px;
-    background-color: #fff;
+    height: 350px;
+    
     display: block;
-    margin: 0 auto;
+    margin: 0.5em;
     border-radius: 10px;
     padding-bottom: 50px;
     flex-direction: column;
     margin-top: 20px;
     font-family: Comic Sans MS, Comic Sans, cursive;
-
+    background-image: url(./img/Clima-en-la-rioja-1024x683.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    border: 1px solid;
  }
    
 
-
 #default {
-    width: 400px;
-    background-color: #fff;
+    width: 400px; 
     display: block;
     margin: 0 auto;
     border-radius: 10px;
@@ -75,32 +87,14 @@ body {
     flex-direction: column;
     margin-top: 20px;
     font-family: Comic Sans MS, Comic Sans, cursive;
+    background-image: url(./img/Clima-en-la-rioja-1024x683.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    border: 1px solid;
 }
 
-/* #div_padre{
-    width: 400px;
-    background-color: #fff;
-    display: block;
-    margin: 0 auto;
-    border-radius: 10px;
-    padding-bottom: 50px;
-    flex-direction: column;
-    margin-top: 20px;
-    font-family: Comic Sans MS, Comic Sans, cursive;
-}
 
-#nameCity{
-    font-size: 2rem;
-    font-family: Marker Felt, fantasy;
-
-}
-#country{
-    font-size: 2rem;
-    font-family: Marker Felt, fantasy;
-}
-#temperatura{
-    font-size: 2rem;
-    font-family: Marker Felt, fantasy;
-} */
 
 

@@ -16,7 +16,6 @@ let lon;
 
 window.navigator.geolocation.getCurrentPosition(result => {
     lat = result.coords.latitude
-
     lon = result.coords.longitude
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGllZ29lbmZmIiwiYSI6ImNrbnU0eXJqejA5ZzIydXFuYnlyaGgycnUifQ.7sAhHhu7425dm2tEFIFwzg';
     var map = new mapboxgl.Map({
@@ -33,20 +32,14 @@ window.navigator.geolocation.getCurrentPosition(result => {
         .addTo(map);
 
 
-
     fetch(`https://api.weatherbit.io/v2.0/current?lat=${lat}&lon=${lon}&key=a87dda00c9e546089e87eed05fa8561b&include=minutely`)
         .then(response => response.json())
 
         .then(json => {
             const data = json.data[0]
-            
-
-
             const p_city = document.createElement("p")
             const p_country = document.createElement("p")
             const p_temp = document.createElement("p")
-
-
 
             // tiempo 
 
@@ -61,8 +54,6 @@ window.navigator.geolocation.getCurrentPosition(result => {
 
             weather_default.appendChild(img_icon_default)
             weather_default.appendChild(description_img_Default)
-
-
 
             //datos de las ciudad
             weather_default.appendChild(p_city)
@@ -88,18 +79,12 @@ window.navigator.geolocation.getCurrentPosition(result => {
             weather_default.appendChild(p_vis)
             p_vis.innerText = "visibility is: " + visibilidad_Default + " KM"
 
-
-
-
         })
 
 })
 
 
-
 btnBuscar.addEventListener("click", () => {
-
-   
     const weather_default = document.getElementById("default")
     weather_default.style.display = "none"
 
@@ -107,7 +92,7 @@ btnBuscar.addEventListener("click", () => {
     const country_code_value = country_code.value
 
     let promesa = fetch(`https://api.weatherbit.io/v2.0/current?key=a87dda00c9e546089e87eed05fa8561b&city=${input_city_value}&country=${country_code_value}`)
-        console.log(`https://api.weatherbit.io/v2.0/current?key=a87dda00c9e546089e87eed05fa8561b&city=${input_city_value}&country=${country_code_value}`)
+        
    
         promesa
         .then(response => response.json() )
@@ -117,8 +102,10 @@ btnBuscar.addEventListener("click", () => {
             const data = datos.data[0]
             
             let nuevas_tarjetas = document.createElement("div")
+            const background_img = document.createElement("img")
             nuevas_tarjetas.className = "nuevas_tarjetas"
             tarjetas.appendChild(nuevas_tarjetas)
+            tarjetas.appendChild(background_img)
 
             const img_icon = document.createElement("img")
             const nameCity = document.createElement("h2")
@@ -134,7 +121,7 @@ btnBuscar.addEventListener("click", () => {
             nuevas_tarjetas.appendChild(description_img)
             nuevas_tarjetas.appendChild(sensacion)
 
-
+    
             //datos de las ciudad
             const cityName = data.city_name
             const country_code = data.country_code
@@ -154,10 +141,7 @@ btnBuscar.addEventListener("click", () => {
             img_icon.src = ulrIcon
             const description = weather.description
             description_img.innerText = description
-
             const sensacion_termica = data.app_temp
-
-
             sensacion.innerText = "thermal sensation: " + sensacion_termica + " Cº"
 
 
@@ -179,23 +163,7 @@ btnBuscar.addEventListener("click", () => {
                 .setLngLat([coordi_lon, coordi_lat])
                 .addTo(map);
 
-
-
-
-
-
-
-
-
         })
-
-        //.catch(alert("error"))
-        
-    
-
-
-
-
 
 })
 
