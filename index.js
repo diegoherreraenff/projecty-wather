@@ -10,22 +10,24 @@ const country_code_value = country_code.value
 const key_value = key.value
 const btnBuscar = document.getElementById("btnBuscar")
 
-let lat;
-let lon;
+
+
 
 
 window.navigator.geolocation.getCurrentPosition(result => {
     lat = result.coords.latitude
     lon = result.coords.longitude
+
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGllZ29lbmZmIiwiYSI6ImNrbnU0eXJqejA5ZzIydXFuYnlyaGgycnUifQ.7sAhHhu7425dm2tEFIFwzg';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [lon, lat],
-        zoom: 10,
+        zoom: 0,
         Marker: ({ color: "blue", rotation: 45 })
 
     })
+
 
     var marker1 = new mapboxgl.Marker()
         .setLngLat([lon, lat])
@@ -81,91 +83,86 @@ window.navigator.geolocation.getCurrentPosition(result => {
 
         })
 
-})
+    btnBuscar.addEventListener("click", () => {
+        const weather_default = document.getElementById("default")
+        weather_default.style.display = "none"
+
+        const input_city_value = input_city.value
+        const country_code_value = country_code.value
+
+        let promesa = fetch(`https://api.weatherbit.io/v2.0/current?key=a87dda00c9e546089e87eed05fa8561b&city=${input_city_value}&country=${country_code_value}`)
 
 
-btnBuscar.addEventListener("click", () => {
-    const weather_default = document.getElementById("default")
-    weather_default.style.display = "none"
-
-    const input_city_value = input_city.value
-    const country_code_value = country_code.value
-
-    let promesa = fetch(`https://api.weatherbit.io/v2.0/current?key=a87dda00c9e546089e87eed05fa8561b&city=${input_city_value}&country=${country_code_value}`)
-        
-   
         promesa
-        .then(response => response.json() )
+            .then(response => response.json())
 
-        .then(datos => {
-            
-            const data = datos.data[0]
-            
-            let nuevas_tarjetas = document.createElement("div")
-            const background_img = document.createElement("img")
-            nuevas_tarjetas.className = "nuevas_tarjetas"
-            tarjetas.appendChild(nuevas_tarjetas)
-            tarjetas.appendChild(background_img)
+            .then(datos => {
 
-            const img_icon = document.createElement("img")
-            const nameCity = document.createElement("h2")
-            const country = document.createElement("h3")
-            const temperatura = document.createElement("p")
-            const description_img = document.createElement("p")
-            const sensacion = document.createElement("p")
+                const data = datos.data[0]
 
-            nuevas_tarjetas.appendChild(img_icon)
-            nuevas_tarjetas.appendChild(nameCity)
-            nuevas_tarjetas.appendChild(country)
-            nuevas_tarjetas.appendChild(temperatura)
-            nuevas_tarjetas.appendChild(description_img)
-            nuevas_tarjetas.appendChild(sensacion)
+                let nuevas_tarjetas = document.createElement("div")
+                const background_img = document.createElement("img")
+                nuevas_tarjetas.className = "nuevas_tarjetas"
+                tarjetas.appendChild(nuevas_tarjetas)
+                tarjetas.appendChild(background_img)
 
-    
-            //datos de las ciudad
-            const cityName = data.city_name
-            const country_code = data.country_code
-            const temp = data.temp
+                const img_icon = document.createElement("img")
+                const nameCity = document.createElement("h2")
+                const country = document.createElement("h3")
+                const temperatura = document.createElement("p")
+                const description_img = document.createElement("p")
+                const sensacion = document.createElement("p")
 
-            nameCity.innerText = cityName
-            country.innerText = country_code
-
-            // tiempo 
-            temperatura.innerText = "temp:" + temp + " Cº"
-            const weather = data.weather
-            const weatherIcon = weather.icon
-            const ulrIcon = `https://www.weatherbit.io/static/img/icons/${weatherIcon}.png`
+                nuevas_tarjetas.appendChild(img_icon)
+                nuevas_tarjetas.appendChild(nameCity)
+                nuevas_tarjetas.appendChild(country)
+                nuevas_tarjetas.appendChild(temperatura)
+                nuevas_tarjetas.appendChild(description_img)
+                nuevas_tarjetas.appendChild(sensacion)
 
 
+                //datos de las ciudad
+                const cityName = data.city_name
+                const country_code = data.country_code
+                const temp = data.temp
 
-            img_icon.src = ulrIcon
-            const description = weather.description
-            description_img.innerText = description
-            const sensacion_termica = data.app_temp
-            sensacion.innerText = "thermal sensation: " + sensacion_termica + " Cº"
+                nameCity.innerText = cityName
+                country.innerText = country_code
 
-
-            //Create a default Marker and add it to the map.
-            const coordi_lon = data.lon
-            const coordi_lat = data.lat
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZGllZ29lbmZmIiwiYSI6ImNrbnU0eXJqejA5ZzIydXFuYnlyaGgycnUifQ.7sAhHhu7425dm2tEFIFwzg';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [coordi_lon, coordi_lat],
-                zoom: 10
-            });
+                // tiempo 
+                temperatura.innerText = "temp:" + temp + " Cº"
+                const weather = data.weather
+                const weatherIcon = weather.icon
+                const ulrIcon = `https://www.weatherbit.io/static/img/icons/${weatherIcon}.png`
 
 
-            // Create a default Marker, colored black, rotated 45 degrees.
-            var marker2 = new mapboxgl.Marker({ color: 'black', rotation: 45 })
 
-                .setLngLat([coordi_lon, coordi_lat])
-                .addTo(map);
+                img_icon.src = ulrIcon
+                const description = weather.description
+                description_img.innerText = description
+                const sensacion_termica = data.app_temp
+                sensacion.innerText = "thermal sensation: " + sensacion_termica + " Cº"
 
-        })
+
+                //Create a default Marker and add it to the map.
+                const coordi_lon = data.lon
+                const coordi_lat = data.lat
+               
+                // Create a default Marker, colored black, rotated 45 degrees.
+                var marker2 = new mapboxgl.Marker({ color: 'black', rotation: 45 })
+
+                    .setLngLat([coordi_lon, coordi_lat])
+                    .addTo(map);
+
+            })
+
+
+    })
 
 })
+
+
+
 
 
 

@@ -21,7 +21,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url(./img/Clima-en-la-rioja-1024x683.jpg);
+    background-image: url(./img/cielo-azul.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -56,6 +56,7 @@ body {
 #tarjetas{
     display: flex;
     flex-direction: row;
+    padding: 0  ;
 
 }
  .nuevas_tarjetas {
@@ -69,7 +70,7 @@ body {
     flex-direction: column;
     margin-top: 20px;
     font-family: Comic Sans MS, Comic Sans, cursive;
-    background-image: url(./img/Clima-en-la-rioja-1024x683.jpg);
+    background-image: url(./img/cielo-azul.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -87,7 +88,7 @@ body {
     flex-direction: column;
     margin-top: 20px;
     font-family: Comic Sans MS, Comic Sans, cursive;
-    background-image: url(./img/Clima-en-la-rioja-1024x683.jpg);
+    background-image: url(./img/cielo-azul.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
